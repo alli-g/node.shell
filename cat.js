@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const cat = function (cmd) {
+const cat = function (cmd,callback) {
   if (cmd.slice(0, 3) === "cat") {
     let filename = cmd.slice(4, cmd.length);
     let directory = process.cwd().toString().trim();
@@ -8,10 +8,10 @@ const cat = function (cmd) {
       if (err) {
         throw err;
       } else {
-        process.stdout.write(data);
-        process.stdout.write("\nprompt > ");
+        callback(data);
       }
     });
   }
 };
+
 module.exports = cat;

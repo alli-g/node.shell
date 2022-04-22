@@ -1,12 +1,11 @@
 const fs = require("fs");
-const isls = function (cmd) {
+const isls = function (cmd, callback) {
   if (cmd === "ls") {
     fs.readdir("./", "utf8", (err, files) => {
       if (err) {
         throw err;
       } else {
-        process.stdout.write(files.join("\n"));
-        process.stdout.write("\nprompt > ");
+        callback(files.join("\n"));
       }
     });
   }

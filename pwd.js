@@ -1,7 +1,6 @@
-const ispwd = function (cmd) {
+const ispwd = function (cmd, callback) {
   if (cmd === "pwd") {
-    process.stdout.write(process.cwd());
-    process.stdout.write("\nprompt > ");
+    callback(process.cwd());
   }
 };
 
